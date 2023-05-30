@@ -1,0 +1,48 @@
+  {
+  "name": "PriceLog",
+  "description": "See prices on different pages!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting","tabs"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/get_started16.png",
+      "32": "/images/get_started32.png",
+      "48": "/images/get_started48.png",
+      "128": "/images/get_started128.png"
+    },
+    "default_title": "different_Prices"
+  },
+  "icons": {
+    "16": "/images/get_started16.png",
+    "32": "/images/get_started32.png",
+    "48": "/images/get_started48.png",
+    "128": "/images/get_started128.png"
+  },
+
+"web_accessible_resources": [{
+  "resources": ["modal.html"],
+  "matches": ["https://*/*"],
+  "extension_ids": []
+ }],
+"content_scripts": [{
+    "js": [
+      "jquery.js",
+      "modal.js",
+      "content.js"
+    ],
+    "css": [
+      "modal.css"
+    ],
+    
+    "matches": [
+        "https://*/*"
+    ],
+    "exclude_matches": ["http://*/*"],
+    "run_at": "document_start"
+}]
+}
